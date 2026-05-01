@@ -12,17 +12,10 @@ import {
   SafeAreaView,
 } from "react-native";
 
-type Task = {
-  id: string;
-  title: string;
-  done: boolean;
-  priority: "HIGH" | "MEDIUM" | "LOW";
-};
-
-export default function Index() {
-  const [task, setTask] = useState<string>("");
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [filter, setFilter] = useState<"ALL" | "ACTIVE" | "DONE">("ALL");
+export default function App() {
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState("ALL");
 
   const addTask = () => {
     if (task.trim() === "") {
@@ -30,35 +23,31 @@ export default function Index() {
       return;
     }
 
-    const newTask: Task = {
+    const newTask = {
       id: Date.now().toString(),
       title: task,
       done: false,
       priority: getRandomPriority(),
     };
 
-    setTasks((prev) => [...prev, newTask]);
+    setTasks([...tasks, newTask]);
     setTask("");
   };
 
-  const deleteTask = (id: string) => {
-    setTasks((prev) => prev.filter((item) => item.id !== id));
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((item) => item.id !== id));
   };
 
-  const toggleDone = (id: string) => {
-    setTasks((prev) =>
-      prev.map((item) =>
+  const toggleDone = (id) => {
+    setTasks(
+      tasks.map((item) =>
         item.id === id ? { ...item, done: !item.done } : item
       )
     );
   };
 
-  const getRandomPriority = (): "HIGH" | "MEDIUM" | "LOW" => {
-    const levels: ("HIGH" | "MEDIUM" | "LOW")[] = [
-      "HIGH",
-      "MEDIUM",
-      "LOW",
-    ];
+  const getRandomPriority = () => {
+    const levels = ["HIGH", "MEDIUM", "LOW"];
     return levels[Math.floor(Math.random() * levels.length)];
   };
 
@@ -70,7 +59,7 @@ export default function Index() {
 
   const completedCount = tasks.filter((t) => t.done).length;
 
-  const renderItem = ({ item }: { item: Task }) => (
+  const renderItem = ({ item }) => (
     <View style={styles.taskItem}>
       <TouchableOpacity onPress={() => toggleDone(item.id)}>
         <Text style={[styles.taskText, item.done && styles.doneText]}>
@@ -110,9 +99,12 @@ export default function Index() {
           onChangeText={setTask}
         />
 
-        <TouchableOpacity style={styles.addButton} onPress={addTask}>
-          <Text style={styles.addText}>Tambah Task</Text>
-        </TouchableOpacity>
+        {/* 🔥 BUTTON TENGAH + TURUN */}
+        <View style={styles.buttonWrapper}>
+          <TouchableOpacity style={styles.addButton} onPress={addTask}>
+            <Text style={styles.addText}>Tambah Task</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* FILTER */}
         <View style={styles.filterContainer}>
@@ -123,7 +115,7 @@ export default function Index() {
                 styles.filterBtn,
                 filter === f && styles.activeFilter,
               ]}
-              onPress={() => setFilter(f as any)}
+              onPress={() => setFilter(f)}
             >
               <Text style={styles.filterText}>{f}</Text>
             </TouchableOpacity>
@@ -143,12 +135,12 @@ export default function Index() {
   );
 }
 
-const getPriorityStyle = (priority: string) => {
+const getPriorityStyle = (priority) => {
   switch (priority) {
     case "HIGH":
       return { color: "#ff5252", fontWeight: "bold" };
     case "MEDIUM":
-      return { color: "#6e83b6" };
+      return { color: "#ffb300" };
     default:
       return { color: "#4caf50" };
   }
@@ -168,10 +160,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#7e9682",
     marginBottom: 10,
+    textAlign: "center",
   },
   counter: {
     color: "#aaa",
     marginBottom: 15,
+    textAlign: "center",
   },
   input: {
     backgroundColor: "#ddedd9",
@@ -180,19 +174,23 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
   },
+  buttonWrapper: {
+    marginTop: 50,
+    alignItems: "center",
+  },
   addButton: {
     backgroundColor: "#bbd1bc",
     padding: 14,
     borderRadius: 10,
     alignItems: "center",
-    marginBottom: 10,
+    width: "70%",
   },
   addText: {
     color: "#000000",
     fontWeight: "bold",
   },
   taskItem: {
-    backgroundColor: "#e2f8e4",
+    backgroundColor: "#a28585",
     padding: 15,
     borderRadius: 12,
     marginVertical: 6,
@@ -201,7 +199,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   taskText: {
-    color: "#000000",
+    color: "#99b7a2",
     fontSize: 16,
   },
   doneText: {
@@ -235,7 +233,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#4CAF50",
   },
   filterText: {
-    color: "#ffffff",
+    color: "#cadbc0",
     fontWeight: "500",
   },
 });
