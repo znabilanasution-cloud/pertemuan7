@@ -1,50 +1,40 @@
-# Welcome to your Expo app 👋
+# 📱 MyTaskList App
+Nama; Zakiah Nabila Nasution 
+Nim; 243303621291
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 📌 Deskripsi Aplikasi
 
-## Get started
+MyTaskList adalah aplikasi to-do list sederhana yang digunakan untuk mencatat dan mengelola tugas harian. Pengguna dapat menambahkan, menghapus, serta menandai tugas sebagai selesai. Aplikasi ini juga dilengkapi dengan fitur filter dan penentuan prioritas untuk membantu mengatur pekerjaan dengan lebih efektif.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Fitur yang Diimplementasikan
 
-2. Start the app
+✅ Menambahkan task baru (Add Task)
+✅ Menghapus task (Delete Task)
+✅ Menandai task sebagai selesai (Mark as Done)
+✅ Input task dengan validasi (tidak boleh kosong)
+✅ Menampilkan daftar task menggunakan FlatList
+✅ Menampilkan pesan saat tidak ada task (Empty State)
+✅ Counter jumlah task selesai dari total task
+✅ Filter task (Semua / Aktif / Selesai)
+✅ Penentuan prioritas task (High / Medium / Low)
+✅ Tampilan UI yang rapi dan konsisten
+✅ Layout menggunakan Flexbox dan StyleSheet
+---
+## 🛠️ Teknologi yang Digunakan
 
-   ```bash
-   npx expo start
-   ```
+* React Native
+* Expo
+* TypeScript
+* Expo Route
+---
+## 📸 Screenshot Aplikasi
 
-In the output, you'll find options to open the app in a
+---](https://img.sanishtech.com/u/2731275dc0fba5b0b07893f700eee604.png) 
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🌐 Link Expo Snack (Opsional)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+(https://snack.expo.dev/@zakia_nst/mini-project-p07)
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
